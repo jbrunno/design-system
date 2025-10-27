@@ -1,5 +1,18 @@
 <template>
-  <Button v-bind="$attrs" :label="label" :icon="icon" :severity="severity" :size="size">
+  <Button 
+    v-bind="$attrs" 
+    :label="label" 
+    :icon="icon" 
+    :iconPos="iconPos"
+    :severity="severity" 
+    :size="size"
+    :outlined="outlined"
+    :text="text"
+    :raised="raised"
+    :rounded="rounded"
+    :loading="loading"
+    :disabled="disabled"
+  >
     <slot />
   </Button>
 </template>
@@ -10,9 +23,24 @@ import Button from 'primevue/button'
 interface Props {
   label?: string
   icon?: string
-  severity?: 'secondary' | 'success' | 'info' | 'warn' | 'danger' | 'contrast'
+  iconPos?: 'left' | 'right' | 'top' | 'bottom'
+  severity?: 'secondary' | 'success' | 'info' | 'warn' | 'danger' | 'contrast' | 'help'
   size?: 'small' | 'large'
+  outlined?: boolean
+  text?: boolean
+  raised?: boolean
+  rounded?: boolean
+  loading?: boolean
+  disabled?: boolean
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), {
+  iconPos: 'left',
+  outlined: false,
+  text: false,
+  raised: false,
+  rounded: false,
+  loading: false,
+  disabled: false
+})
 </script>
