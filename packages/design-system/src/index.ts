@@ -3,6 +3,7 @@ import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 import DSS360Aura from './theme/dss360-aura'
 
+import 'primeicons/primeicons.css'
 import './styles/tailwind.css'
 
 export { default as DSButton } from './components/DSButton.vue'

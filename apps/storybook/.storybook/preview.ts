@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/vue3'
 import { setup } from '@storybook/vue3'
 import { installDesignSystem } from '@repo/design-system'
+import 'primeicons/primeicons.css'
 
 setup((app) => {
   installDesignSystem(app)
