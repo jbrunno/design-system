@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 import PrimeVue from 'primevue/config'
-import Aura from '@primevue/themes/aura'
 import ToastService from 'primevue/toastservice'
+import DSS360Aura from './theme/dss360-aura'
 
 import './styles/tailwind.css'
 
@@ -27,7 +27,7 @@ export { default as DSPanel } from './components/DSPanel.vue'
 export const installDesignSystem = (app: App) => {
   app.use(PrimeVue, {
     theme: {
-      preset: Aura,
+      preset: DSS360Aura,
       options: {
         darkModeSelector: '.dark-mode'
       }

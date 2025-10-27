@@ -1,10 +1,10 @@
 # Design System
 
-Um design system completo baseado em **PrimeVue 4.4.1** com tema **Aura**, **Tailwind CSS v4**, e **Storybook** para documentação interativa.
+Um design system completo baseado em **PrimeVue 4.4.1** com tema **DSS+360 Aura** customizado, **Tailwind CSS v4**, e **Storybook** para documentação interativa.
 
 ## 🚀 Características
 
-- ✅ **PrimeVue 4.4.1** com tema Aura
+- ✅ **PrimeVue 4.4.1** com tema DSS+360 Aura customizado
 - ✅ **Tailwind CSS v4** para estilização
 - ✅ **Vue 3** com TypeScript
 - ✅ **Turborepo** para monorepo
@@ -12,6 +12,7 @@ Um design system completo baseado em **PrimeVue 4.4.1** com tema **Aura**, **Tai
 - ✅ **18+ componentes** prontos para uso
 - ✅ **Totalmente tipado** com TypeScript
 - ✅ **Pacote NPM** publicável
+- ✅ **Tema customizado** com paleta navy e personalizações do time de design
 
 ## 📦 Estrutura do Projeto
 
@@ -136,14 +137,37 @@ const handleSave = () => {
 </script>
 ```
 
-## 🎨 Tema Aura
+## 🎨 Tema DSS+360 Aura
 
-O design system utiliza o tema **Aura** do PrimeVue 4.4.1, que oferece:
+O design system utiliza um tema customizado **DSS+360 Aura** baseado no tema Aura do PrimeVue 4.4.1, com personalizações criadas pelo time de design:
 
-- Design moderno e limpo
-- Suporte a modo escuro (dark mode)
-- Cores consistentes e acessíveis
-- Animações suaves
+### Características do Tema
+
+- **Cor primária Navy**: Paleta de cores navy (#191A35) como cor primária ao invés do azul padrão do Aura
+- **Design moderno e limpo**: Mantém a estética moderna do Aura
+- **Suporte a modo escuro (dark mode)**: Variantes light e dark totalmente configuradas
+- **Cores consistentes e acessíveis**: Paleta de cores otimizada para acessibilidade
+- **Animações suaves**: Transições e animações refinadas
+- **Form fields customizados**: Estilização personalizada para campos de formulário com focus ring configurado
+- **Border radius customizado**: Valores de border radius ajustados (xs: 2px, sm: 4px, md: 6px, lg: 8px, xl: 12px)
+
+### Paleta de Cores Primária (Navy)
+
+```typescript
+primary: {
+  50: '#E8E8EB',
+  100: '#B8B8C1',
+  200: '#9596A3',
+  300: '#656679',
+  400: '#30314B',
+  500: '#191A35',  // Cor primária principal
+  600: '#171832',
+  700: '#121227',
+  800: '#0E0E1E',
+  900: '#0B0B17',
+  950: '#010101'
+}
+```
 
 ### Ativando Dark Mode
 
