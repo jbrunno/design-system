@@ -1,135 +1,296 @@
-# Turborepo starter
+# Design System
 
-This Turborepo starter is maintained by the Turborepo core team.
+Um design system completo baseado em **PrimeVue 4.4.1** com tema **Aura**, **Tailwind CSS v4**, e **Storybook** para documentação interativa.
 
-## Using this example
+## 🚀 Características
 
-Run the following command:
+- ✅ **PrimeVue 4.4.1** com tema Aura
+- ✅ **Tailwind CSS v4** para estilização
+- ✅ **Vue 3** com TypeScript
+- ✅ **Turborepo** para monorepo
+- ✅ **Storybook** para documentação interativa
+- ✅ **18+ componentes** prontos para uso
+- ✅ **Totalmente tipado** com TypeScript
+- ✅ **Pacote NPM** publicável
 
-```sh
-npx create-turbo@latest
+## 📦 Estrutura do Projeto
+
+```
+design-system/
+├── apps/
+│   └── storybook/          # Aplicação Storybook para documentação
+├── packages/
+│   ├── design-system/      # Pacote principal do design system
+│   ├── eslint-config/      # Configuração ESLint compartilhada
+│   └── typescript-config/  # Configuração TypeScript compartilhada
+└── package.json
 ```
 
-## What's inside?
+## 🛠️ Instalação
 
-This Turborepo includes the following packages/apps:
+### Pré-requisitos
 
-### Apps and Packages
+- Node.js >= 18
+- pnpm >= 9.0.0
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Instalar dependências
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+```bash
+pnpm install
+```
 
-### Utilities
+## 📚 Componentes Disponíveis
 
-This Turborepo has some additional tools already setup for you:
+O design system inclui os seguintes componentes baseados no PrimeVue:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### Formulários
+- **DSButton** - Botão com variantes de severidade e tamanho
+- **DSInput** - Campo de texto
+- **DSTextarea** - Área de texto
+- **DSCheckbox** - Caixa de seleção
+- **DSRadioButton** - Botão de rádio
+- **DSDropdown** - Menu suspenso
+- **DSCalendar** - Seletor de data
+
+### Layout
+- **DSCard** - Cartão com cabeçalho, conteúdo e rodapé
+- **DSPanel** - Painel expansível
+- **DSAccordion** - Acordeão
+- **DSTabView** - Visualização de abas
+
+### Dados
+- **DSDataTable** - Tabela de dados com paginação
+
+### Overlay
+- **DSDialog** - Diálogo modal
+- **DSMenu** - Menu contextual
+
+### Feedback
+- **DSToast** - Notificações toast
+- **DSProgressBar** - Barra de progresso
+
+### Misc
+- **DSBadge** - Badge/distintivo
+- **DSChip** - Chip removível
+
+## 💻 Uso
+
+### Instalando o Design System em seu projeto
+
+```bash
+# Se publicado no NPM
+npm install @repo/design-system
+
+# Ou usando pnpm
+pnpm add @repo/design-system
+```
+
+### Configuração no Vue 3
+
+```typescript
+// main.ts
+import { createApp } from 'vue'
+import { installDesignSystem } from '@repo/design-system'
+import '@repo/design-system/style.css'
+import App from './App.vue'
+
+const app = createApp(App)
+
+// Instalar o design system (inclui PrimeVue com tema Aura)
+installDesignSystem(app)
+
+app.mount('#app')
+```
+
+### Usando Componentes
+
+```vue
+<template>
+  <div>
+    <DSCard title="Meu Cartão" subtitle="Subtítulo">
+      <p>Conteúdo do cartão</p>
+      
+      <DSInput 
+        v-model="inputValue" 
+        placeholder="Digite algo..." 
+      />
+      
+      <DSButton 
+        label="Salvar" 
+        severity="success" 
+        @click="handleSave" 
+      />
+    </DSCard>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { DSCard, DSInput, DSButton } from '@repo/design-system'
+
+const inputValue = ref('')
+
+const handleSave = () => {
+  console.log('Salvando:', inputValue.value)
+}
+</script>
+```
+
+## 🎨 Tema Aura
+
+O design system utiliza o tema **Aura** do PrimeVue 4.4.1, que oferece:
+
+- Design moderno e limpo
+- Suporte a modo escuro (dark mode)
+- Cores consistentes e acessíveis
+- Animações suaves
+
+### Ativando Dark Mode
+
+```typescript
+// Adicione a classe 'dark-mode' ao elemento raiz
+document.documentElement.classList.add('dark-mode')
+```
+
+## 🎭 Storybook
+
+O Storybook fornece documentação interativa de todos os componentes.
+
+### Acessar Storybook
+
+```bash
+pnpm --filter storybook dev
+```
+
+Acesse: http://localhost:6006
+
+## 🎯 Comandos Disponíveis
+
+### Desenvolvimento
+
+```bash
+# Iniciar Storybook em modo de desenvolvimento
+pnpm --filter storybook dev
+
+# Build do design system em modo watch
+pnpm --filter @repo/design-system dev
+```
 
 ### Build
 
-To build all apps and packages, run the following command:
+```bash
+# Build de todos os pacotes
+pnpm run build
 
-```
-cd my-turborepo
+# Build apenas do design system
+pnpm --filter @repo/design-system build
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+# Build do Storybook
+pnpm --filter storybook build
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### Lint e Type Check
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+```bash
+# Lint de todos os pacotes
+pnpm run lint
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+# Type check de todos os pacotes
+pnpm run check-types
 ```
 
-### Develop
+## 🔧 Desenvolvimento
 
-To develop all apps and packages, run the following command:
+### Adicionando um Novo Componente
 
-```
-cd my-turborepo
+1. Crie o componente em `packages/design-system/src/components/`:
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
+```vue
+<!-- DSNewComponent.vue -->
+<template>
+  <PrimeVueComponent v-bind="$attrs" :prop="prop">
+    <slot />
+  </PrimeVueComponent>
+</template>
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
+<script setup lang="ts">
+import PrimeVueComponent from 'primevue/component'
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+interface Props {
+  prop?: string
+}
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+defineProps<Props>()
+</script>
 ```
 
-### Remote Caching
+2. Exporte no `src/index.ts`:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+```typescript
+export { default as DSNewComponent } from './components/DSNewComponent.vue'
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+3. Crie uma story em `apps/storybook/src/stories/`:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+```typescript
+// DSNewComponent.stories.ts
+import type { Meta, StoryObj } from '@storybook/vue3'
+import { DSNewComponent } from '@repo/design-system'
 
+const meta = {
+  title: 'Components/DSNewComponent',
+  component: DSNewComponent,
+  tags: ['autodocs'],
+} satisfies Meta<typeof DSNewComponent>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  args: {
+    prop: 'value'
+  }
+}
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+## 🌐 Tailwind CSS v4
+
+O design system utiliza Tailwind CSS v4 para estilização adicional. Você pode usar classes Tailwind em seus componentes:
+
+```vue
+<template>
+  <DSCard class="max-w-md mx-auto mt-4">
+    <DSButton class="w-full" label="Botão Full Width" />
+  </DSCard>
+</template>
 ```
 
-## Useful Links
+## 📦 Publicação
 
-Learn more about the power of Turborepo:
+Para publicar o pacote no NPM:
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+1. Atualize a versão em `packages/design-system/package.json`
+2. Build do pacote:
+
+```bash
+pnpm --filter @repo/design-system build
+```
+
+3. Publique:
+
+```bash
+cd packages/design-system
+npm publish
+```
+
+## 🔗 Links Úteis
+
+- [PrimeVue Documentation](https://primevue.org/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/)
+- [Storybook Documentation](https://storybook.js.org/)
+- [Turborepo Documentation](https://turbo.build/repo)
+- [Vue 3 Documentation](https://vuejs.org/)
+
+## 📄 Licença
+
+MIT

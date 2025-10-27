@@ -1,0 +1,29 @@
+{
+  "name": "storybook",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "preview": "serve storybook-static"
+  },
+  "dependencies": {
+    "@repo/design-system": "workspace:*",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.5.0",
+    "@storybook/addon-interactions": "^8.5.0",
+    "@storybook/addon-links": "^8.5.0",
+    "@storybook/blocks": "^8.5.0",
+    "@storybook/test": "^8.5.0",
+    "@storybook/vue3": "^8.5.0",
+    "@storybook/vue3-vite": "^8.5.0",
+    "storybook": "^8.5.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7",
+    "typescript": "^5.9.2",
+    "@repo/typescript-config": "workspace:*"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "@repo/typescript-config/vue.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./dist",
+    "emitDeclarationOnly": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
